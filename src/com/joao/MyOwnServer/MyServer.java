@@ -20,10 +20,12 @@ public class MyServer {
     public static void main(String[] args){
 
         MyServer myServer = new MyServer();
-        myServer.prepare();
-        myServer.readRequest();
-        myServer.sendResponse();
-        myServer.stopService();
+        while (true){
+            myServer.prepare();
+            myServer.readRequest();
+            myServer.sendResponse();
+            myServer.stopService();
+        }
 
     }
 
@@ -57,7 +59,7 @@ public class MyServer {
     }
 
     public void sendResponse(){
-         File file = new File("/home/joao/IdeaProjects/MyOwnServer/src/com/joao/MyOwnServer/" + fileRequested);
+         File file = new File("www/" + fileRequested);
          int fileLength = (int) file.length();
          byte[] fileData = new byte[fileLength];
 
